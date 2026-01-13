@@ -1,50 +1,60 @@
-# Welcome to your Expo app 👋
+# react native scientific calculator 🧮
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+a dark-mode, ios-inspired scientific calculator built using **react native + expo**.  
+supports advanced mathematical expressions with clean ui and robust input handling.
 
-## Get started
+---
 
-1. Install dependencies
+## features
 
-   ```bash
-   npm install
-   ```
+- basic arithmetic: `+  -  *  /`
+- exponentiation using `^`
+- natural logarithm `ln(x)`
+- mathematical constant `e`
+- percentage calculations (calculator-style, not modulo)
+- parentheses support
+- expression evaluation using `mathjs`
+- dark ui inspired by ios calculator
+- fully custom reusable button component
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## technical highlights
 
-In the output, you'll find options to open the app in a
+- built using **react native with expo**
+- custom `CalcButton` component for consistent ui & behavior
+- expression parsing with safety checks:
+  - prevents invalid decimals
+  - trims trailing operators before evaluation
+  - balances parentheses automatically
+- translates `ln()` to `log()` internally for mathjs compatibility
+- handles edge cases like:
+  - `200 * 10 %`
+  - `ln(e)`
+  - nested parentheses
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 📱 ui preview
 
-## Get a fresh project
+dark theme, minimal layout, ios-style buttons  
+(no screenshots yet — coming soon)
 
-When you're ready, run:
+---
+
+## tech stack
+
+- react native
+- expo
+- typescript
+- mathjs
+
+---
+
+## getting started
 
 ```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+git clone https://github.com/your-username/your-repo-name
+cd your-repo-name
+npm install
+npx expo start
