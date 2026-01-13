@@ -1,98 +1,65 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { useState } from "react";
+import { View, Text, StyleSheet } from "react-native";
+import CalcButton from "../../components/ui/CalcButton";
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+export default function Index() {
 
-export default function HomeScreen() {
+  const [display, setDisplay] = useState("0");
+
+
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <View style={styles.container}>
+      <Text style={styles.display}>{display}</Text>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <View style={styles.row}>
+        <CalcButton label="0" onPress={() => {}}></CalcButton>
+        <CalcButton label="1" onPress={() => setDisplay(prev => prev === "0" ? "1" : prev + "1")} />
+        <CalcButton label="2" onPress={() => setDisplay(prev => prev === "0" ? "2" : prev + "2")} />
+        <CalcButton label="+" variant="operator" onPress={() => {}} />
+      </View>
+      <View style={styles.row}>
+          <CalcButton label="3" onPress={()=>{}} />
+          <CalcButton label="4" onPress={()=>{}} />
+          <CalcButton label="5" onPress={()=>{}} />
+          <CalcButton label="-" variant="operator" onPress={()=>{}} />
+      </View>
+      <View style={styles.row}>
+          <CalcButton label="6" onPress={()=>{}} />
+          <CalcButton label="7" onPress={()=>{}} />
+          <CalcButton label="8" onPress={()=>{}} />
+          <CalcButton label="*" variant="operator" onPress={()=>{}} />
+      </View>
+      <View style={styles.row}>
+          <CalcButton label="9" onPress={()=>{}} />
+          <CalcButton label="." onPress={()=>{}} />
+          <CalcButton label="^" variant="operator" onPress={()=>{}} />
+          <CalcButton label="/" variant="operator" onPress={()=>{}} />
+      </View>
+      <View style={styles.row}>
+          <CalcButton label="ln" variant="operator" onPress={()=>{}} />
+          <CalcButton label="C" variant="operator" onPress={()=>{}} />
+          <CalcButton label="CE" variant="operator" onPress={()=>{}} />
+          <CalcButton label="=" variant="operator" onPress={()=>{}} />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    backgroundColor: "#000",
+    padding: 20,
+    justifyContent: "flex-end",
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  display: {
+    color: "#fff",
+    fontSize: 56,
+    textAlign: "right",
+    marginBottom: 20,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  row: {
+    flexDirection: "row",
   },
 });
