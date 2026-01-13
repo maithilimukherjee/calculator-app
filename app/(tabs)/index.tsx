@@ -48,7 +48,7 @@ export default function Index() {
     });
   };
 
-  // percent (calculator-style)
+  // percent
   const handlePercentPress = () => {
     setDisplay(prev => {
       const match = prev.match(/(\d+\.?\d*)$/);
@@ -61,22 +61,25 @@ export default function Index() {
     });
   };
 
-  // clear all
   const handleClear = () => setDisplay("0");
 
-  // clear last char
   const handleClearEntry = () =>
     setDisplay(prev => prev.slice(0, -1) || "0");
 
-  // equals
+  // equals (fixed)
   const handleEquals = () => {
     try {
       let expression = display;
 
+      // remove trailing operators
       while ("+-*/^".includes(expression.slice(-1))) {
         expression = expression.slice(0, -1);
       }
 
+      // convert ln → log
+      expression = expression.replace(/ln\(/g, "log(");
+
+      // balance parentheses
       const open = (expression.match(/\(/g) || []).length;
       const close = (expression.match(/\)/g) || []).length;
 
@@ -123,7 +126,6 @@ export default function Index() {
         <CalcButton label="/" variant="operator" onPress={() => handleOperatorPress("/")} />
       </View>
 
-      {/* second last row */}
       <View style={styles.row}>
         <CalcButton label="(" variant="operator" onPress={() => handleParenPress("(")} />
         <CalcButton label=")" variant="operator" onPress={() => handleParenPress(")")} />
