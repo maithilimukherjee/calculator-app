@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import CalcButton from "../../components/ui/CalcButton";
+import CalcButton from "../components/ui/CalcButton";
 import { evaluate } from "mathjs";
 
 export default function Index() {
