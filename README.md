@@ -1,4 +1,4 @@
-# react native scientific calculator 🧮
+# react native scientific calculator 
 
 a dark-mode, ios-inspired scientific calculator built using **react native + expo**.  
 supports advanced mathematical expressions with clean ui and robust input handling.
@@ -35,7 +35,7 @@ supports advanced mathematical expressions with clean ui and robust input handli
 
 ---
 
-## 📱 ui preview
+## ui preview
 
 dark theme, minimal layout, ios-style buttons  
 (no screenshots yet — coming soon)
@@ -54,7 +54,7 @@ dark theme, minimal layout, ios-style buttons
 ## getting started
 
 ```bash
-git clone https://github.com/your-username/your-repo-name
-cd your-repo-name
+git clone https://github.com/maithilimukherjee/calculator-app
+cd calculator-app
 npm install
 npx expo start
